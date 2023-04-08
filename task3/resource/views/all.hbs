@@ -5,9 +5,10 @@
 <h3 class="text-info">All Users</h3>
 <div class="d-flex justify-content-between">
 <a href="/add" class="btn btn-info">Add User</a>
-<a href="/add" class="btn btn-danger">Delete All</a>
+<a href="/delAll" class="btn btn-danger">Delete All</a>
 
 </div>
+
 <table class="table table-dark table-striped">
   <thead>
     <th>ID</th>
@@ -17,6 +18,7 @@
     <th>Actions</th>
   </thead>
   <tbody>
+    {{#if  hasData}}
     {{#each allUsers}}
     <tr>
         <td>{{id}}</td>
@@ -25,11 +27,18 @@
         <td>{{email}}</td>
         <td>
             <a href="/single/{{id}}" class="btn btn-info">Show</a>
-            <a href="#" class="btn btn-warning">Edit</a>
-            <a href="#" class="btn btn-danger">delete</a>
+            <a href="/edit/{{id}}" class="btn btn-warning">Edit</a>
+            <a href="/del/{{id}}" class="btn btn-danger">delete</a>
             </td>
         </tr>
         {{/each}}
+        {{else}}
+        <tr>
+          <td colspan="4">
+            No Users Yet
+          </td>
+        </tr>
+        {{/if}}
   </tbody>
 </table>
         </div>
